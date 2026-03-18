@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixl.</title>
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0f10'/%3E%3Crect x='6' y='6' width='4' height='4' fill='%2300adb5'/%3E%3Crect x='10' y='6' width='4' height='4' fill='%2300adb5'/%3E%3Crect x='14' y='6' width='4' height='4' fill='%23f0f0f0'/%3E%3Crect x='6' y='10' width='4' height='4' fill='%2300adb5'/%3E%3Crect x='14' y='10' width='4' height='4' fill='%23f0f0f0'/%3E%3Crect x='6' y='14' width='4' height='4' fill='%2300adb5'/%3E%3Crect x='10' y='14' width='4' height='4' fill='%2300adb5'/%3E%3Crect x='14' y='14' width='4' height='4' fill='%2300adb5'/%3E%3Crect x='20' y='8' width='6' height='16' rx='2' fill='%2300adb5'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="fit-stage">
+    <div class="app" id="appRoot">
+      
+      <header class="head panel">
+        <div>
+          <h1>Pixl<span class="dot">.</span></h1>
+          <p class="sub">Random Pixel Studio</p>
+        </div>
+        <div class="chips">
+          <span class="chip">Generated: <strong id="countChip">0</strong></span>
+          <span class="chip">Mode: <strong id="modeChip">Manual</strong></span>
+        </div>
+      </header>
+
+      <section class="workspace">
+        
+        <section class="controls panel">
+          <div class="sec">
+            <h2>Core</h2>
+            <div class="grid">
+              <label class="row" for="gridSelect">
+                <span class="label">Grid</span>
+                <select id="gridSelect">
+                  <option value="8">8x8</option>
+                  <option value="12" selected>12x12</option>
+                  <option value="16">16x16</option>
+                  <option value="24">24x24</option>
+                </select>
+              </label>
+              <label class="row" for="styleSelect">
+                <span class="label">Art</span>
+                <select id="styleSelect">
+                  <option value="sprite" selected>Sprite</option>
+                  <option value="quilt">Quilt</option>
+                  <option value="rings">Rings</option>
+                  <option value="maze">Maze</option>
+                  <option value="islands">Islands</option>
+                  <option value="totem">Totem</option>
+                </select>
+              </label>
+              <label class="row" for="paletteSelect">
+                <span class="label">Palette</span>
+                <select id="paletteSelect">
+                  <option value="random" selected>Random</option>
+                  <option value="neon">Neon</option>
+                  <option value="retro">Retro</option>
+                  <option value="sunset">Sunset</option>
+                  <option value="mono">Mono</option>
+                </select>
+              </label>
+              <label class="row density-row" for="densityRange">
+                <span class="label">Density</span>
+                <input id="densityRange" type="range" min="25" max="95" value="62" />
+                <span id="densityValue" class="value">62%</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="sec">
+            <h2>Look & Symmetry</h2>
+            <div class="grid">
+              <label class="row" for="mirrorSelect">
+                <span class="label">Mirror</span>
+                <select id="mirrorSelect">
+                  <option value="vertical" selected>Vertical</option>
+                  <option value="horizontal">Horizontal</option>
+                  <option value="quad">Quad</option>
+                  <option value="none">None</option>
+                </select>
+              </label>
+              <label class="row" for="effectSelect">
+                <span class="label">Effect</span>
+                <select id="effectSelect">
+                  <option value="none" selected>None</option>
+                  <option value="outline">Outline</option>
+                  <option value="invert">Invert</option>
+                  <option value="dither">Dither</option>
+                </select>
+              </label>
+              <label class="row bg-row" for="backgroundSelect">
+                <span class="label">Background</span>
+                <select id="backgroundSelect">
+                  <option value="void" selected>Void</option>
+                  <option value="gradient">Gradient</option>
+                </select>
+              </label>
+              <label class="row" for="chaosToggle">
+                <span class="label">Chaos</span>
+                <span class="toggle">
+                  <input id="chaosToggle" type="checkbox" />
+                  <span class="slider"></span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="sec">
+            <h2>Seed & Auto</h2>
+            <div class="grid">
+              <label class="row" for="seedInput">
+                <span class="label">Seed</span>
+                <input id="seedInput" type="text" placeholder="auto" maxlength="42" />
+              </label>
+              <label class="row" for="lockSeedToggle">
+                <span class="label">Lock Seed</span>
+                <span class="toggle">
+                  <input id="lockSeedToggle" type="checkbox" />
+                  <span class="slider"></span>
+                </span>
+              </label>
+              <label class="row" for="autoToggle">
+                <span class="label">Auto</span>
+                <span class="toggle">
+                  <input id="autoToggle" type="checkbox" />
+                  <span class="slider"></span>
+                </span>
+              </label>
+              <label class="row" for="speedSelect">
+                <span class="label">Speed</span>
+                <select id="speedSelect">
+                  <option value="550">Fast</option>
+                  <option value="1000" selected>Medium</option>
+                  <option value="1700">Slow</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="sec">
+            <h2>Actions</h2>
+            <div class="actions">
+              <button id="generateBtn" class="accent" type="button">Generate</button>
+              <button id="remixBtn" type="button">Remix</button>
+              <button id="surpriseBtn" type="button">Surprise</button>
+              <button id="batchBtn" type="button">Batch x5</button>
+              <button id="downloadBtn" type="button">Download</button>
+              <button id="copySeedBtn" type="button">Copy Seed</button>
+              <button id="clearHistoryBtn" type="button">Clear History</button>
+            </div>
+            <div class="keys">
+              <span>Hotkeys:</span>
+              <code>Space</code><span>Generate</span>
+              <code>R</code><span>Remix</span>
+              <code>B</code><span>Batch</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="right-pane">
+          <section class="stage panel" id="stagePanel">
+            <div class="canvas-wrap">
+              <canvas id="mainCanvas" width="420" height="420" aria-label="Pixel art output"></canvas>
+            </div>
+            <div class="meta" id="metaInfo">Ready</div>
+          </section>
+
+          <footer class="history panel">
+            <div class="hhead">
+              <span>History</span>
+              <div class="hacts">
+                <button id="prevHistoryBtn" class="small" type="button">Prev</button>
+                <button id="nextHistoryBtn" class="small" type="button">Next</button>
+              </div>
+            </div>
+            <div class="strip" id="historyStrip" aria-label="Last generated sprites"></div>
+          </footer>
+        </div>
+
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
